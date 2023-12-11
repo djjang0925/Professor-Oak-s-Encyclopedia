@@ -20,7 +20,7 @@ browser = webdriver.Chrome(service=webdriver_service, options=webdriver_options)
 
 browser.maximize_window()
 
-url = "https://www.pokemonkorea.co.kr/pokedex"
+url = "https://pokemonkorea.co.kr/pokedex?word=&characters=&area=%EA%B4%80%EB%8F%99%EC%A7%80%EB%B0%A9&snumber=1&snumber2=214&sortselval=number+asc%2Cnumber_count+asc&typetextcs=_________________"
 browser.get(url)
 
 interval = 2
@@ -47,7 +47,7 @@ pokemons = soup.select('.img-fluid')
 
 print("이미지 url 저장 완료")
 
-f_dir = '/Users/patrick/Desktop/poke/pokemon'
+f_dir = '/Users/patrick/Desktop/Professor-Oak-s-Encyclopedia/pokemon-image(1st-generation)/pokemon/'
 os.chdir(f_dir)
 
 file_no = 1
