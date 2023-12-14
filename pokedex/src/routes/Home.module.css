@@ -1,0 +1,28 @@
+.container {
+  align-items: center;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  max-width: 80%;
+  margin: auto;
+}
+
+.pokemon {
+  margin-right: 35px;
+}
+
+.oak {
+  margin-bottom: 20px;
+  height: 300px;
+  width: 200px;
+}
+
+.buttonBox {
+  width: 600px;
+  height: 300px;
+}
+
+.button {
+  text-decoration: none;
+  color: black;
+}
