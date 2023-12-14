@@ -22,7 +22,7 @@ const Home = () => {
           <button>
             <Link
               className={styles.button}
-              to={`${process.env.PUBLIC_URL}/pokedex`}
+              to={`${process.env.PUBLIC_URL}/pokemons`}
             >
               Pokédex
             </Link>
