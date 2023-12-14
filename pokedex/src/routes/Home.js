@@ -1,7 +1,11 @@
 import styles from "./Home.module.css";
+import Option from "../components/Option";
 import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 const Home = () => {
+  const { t } = useTranslation();
+
   return (
     <div className={styles.container}>
       <img
@@ -15,7 +19,7 @@ const Home = () => {
         alt="mainLogo"
       />
       <div>
-        <span>Pokédex for 1st generation</span>
+        <span>{t(`home.description`)}</span>
       </div>
       <ul class="framed buttons compact" style={{ width: "600px" }}>
         <li>
@@ -24,19 +28,19 @@ const Home = () => {
               className={styles.button}
               to={`${process.env.PUBLIC_URL}/pokemons`}
             >
-              Pokédex
+              {t(`home.pokédex`)}
             </Link>
           </button>
         </li>
         <li>
-          <button>Option</button>
+          <Option />
         </li>
         {/* 조건문으로 회원정보 수정 및 로그아웃 으로 변경 */}
         <li>
-          <button>Log In</button>
+          <button>{t(`home.login`)}</button>
         </li>
         <li>
-          <button>Sign In</button>
+          <button>{t(`home.signin`)}</button>
         </li>
       </ul>
     </div>

@@ -1,0 +1,18 @@
+{
+  "home": {
+    "description": "1세대 포켓몬 도감",
+    "pokédex": "도감",
+    "option": "설정",
+    "login": "로그인",
+    "signin": "회원가입"
+  },
+  "option": {
+    "language": "언어",
+    "english": "영어",
+    "korea": "한국어",
+    "ui": "디자인",
+    "gameboy": "게임보이",
+    "latest": "몰라",
+    "close": "닫기"
+  }
+}

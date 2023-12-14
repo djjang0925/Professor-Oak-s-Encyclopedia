@@ -1,0 +1,15 @@
+.modal {
+  border: none;
+  background-color: white;
+  align-items: center;
+  margin: 30% auto;
+  max-width: 60%;
+}
+
+.optionList {
+  margin-bottom: 20px;
+}
+
+.close {
+  text-align: end;
+}

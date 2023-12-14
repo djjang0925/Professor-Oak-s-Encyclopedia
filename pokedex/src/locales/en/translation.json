@@ -1,0 +1,18 @@
+{
+  "home": {
+    "description": "Pokédex for 1st generations",
+    "pokédex": "Pokédex",
+    "option": "Option",
+    "login": "Log In",
+    "signin": "Sign In"
+  },
+  "option": {
+    "language": "Language",
+    "english": "English",
+    "korea": "Korea",
+    "ui": "UI",
+    "gameboy": "GameBoy",
+    "latest": "latest",
+    "close": "close"
+  }
+}

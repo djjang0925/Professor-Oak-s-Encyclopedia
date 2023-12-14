@@ -4,7 +4,9 @@
   display: flex;
   flex-direction: column;
   max-width: 80%;
-  margin: auto;
+  margin: 10% auto;
+  padding: 5%;
+  background-color: white;
 }
 
 .pokemon {
