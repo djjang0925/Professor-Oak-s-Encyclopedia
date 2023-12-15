@@ -6,7 +6,7 @@ import i18n from "../locales/i18n";
 
 const Option = () => {
   const { t } = useTranslation();
-  const changeLanguage = (lang: string) => {
+  const changeLanguage = (lang) => {
     i18n.changeLanguage(lang);
   };
   const [modal, setModal] = useState(false);
