@@ -16,7 +16,6 @@ import org.springframework.web.client.RestTemplate;
 public class MainController {
     @GetMapping("/")
     public String test() {
-
 //        RestTemplate restTemplate = new RestTemplate();
 //        String url = "https://pokeapi.co/api/v2/pokemon-species/25/";
 //
