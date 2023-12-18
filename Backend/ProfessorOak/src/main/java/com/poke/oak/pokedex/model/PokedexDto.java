@@ -1,4 +1,4 @@
-package com.poke.oak.professoroak;
+package com.poke.oak.pokedex.model;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -104,11 +104,13 @@ class PokedexNumber {
 
 /**
  * 포켓몬 상세 정보 DTO
+ * 포켓몬 API에서 받아오는 DTO
  */
 public class PokedexDto {
     // 포켓몬 상세 설명에서 사용할 버전 정보
-    private String[] versionNames = {"x", "y", "omega-ruby", "alpha-sapphire",
-                                    "lets-go-pikachu", "lets-go-eevee", "sword", "shield"};
+//    private String[] versionNames = {"x", "y", "omega-ruby", "alpha-sapphire",
+//                                    "lets-go-pikachu", "lets-go-eevee", "sword", "shield"};
+    private String[] versionNames = {"omega-ruby"};
 
     private PokedexNumber[] pokedexNumbers;         // 도감 번호
     private Name[] names;                           // 이름
@@ -209,7 +211,7 @@ public class PokedexDto {
         for(String v : versionNames) {
             for(FlavorTextEntry fte : flavorTextEntries) {
                 if(fte.getVersion().getName().equals(v)) {
-                    result.put(v + "-" + fte.getLanguage().getName(), fte.getFlavor_text());
+                    result.put(fte.getLanguage().getName(), fte.getFlavor_text());
                 }
             }
         }

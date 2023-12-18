@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.poke.oak.pokedex.model.mapper.PokedexMapper">
+
+    <resultMap type="pokemonDto" id="pokemon">
+        <result column="pokedex_number" property="pokedexNumber"/>
+        <result column="color" property="color"/>
+        <result column="is_legendary" property="isLegendary"/>
+        <result column="base_happiness" property="baseHappiness"/>
+        <result column="capture_rate" property="captureRate"/>
+        <result column="name_ko" property="nameKo"/>
+        <result column="name_en" property="nameEn"/>
+        <result column="genera_ko" property="generaKo"/>
+        <result column="genera_en" property="generaEn"/>
+        <result column="description_ko" property="descriptionKo"/>
+        <result column="description_en" property="descriptionEn"/>
+        <result column="retro_img" property="retroImg"/>
+    </resultMap>
+
+    <insert id="importDB" parameterType="pokemonDto">
+        insert into pokemon_info(pokedex_number, color, is_legendary, base_happiness, capture_rate, name_ko, name_en, genera_ko, genera_en, description_ko, description_en, retro_img)
+        values(#{pokedexNumber}, #{color}, #{isLegendary}, #{baseHappiness}, #{captureRate}, #{nameKo}, #{nameEn}, #{generaKo}, #{generaEn}, #{descriptionKo}, #{descriptionEn}, #{retroImg})
+    </insert>
+
+    <select id="getPokemonList" resultMap="pokemon">
+        select pokedex_number, color, name_ko, name_en, retro_img
+        from pokemon_info
+    </select>
+
+    <select id="getPokemon" parameterType="int" resultMap="pokemon">
+        select pokedex_number, color, is_legendary, base_happiness, capture_rate, name_ko, name_en, genera_ko, genera_en, description_ko, description_en, retro_img
+        from pokemon_info
+        where pokedex_number = #{number}
+    </select>
+
+</mapper>
