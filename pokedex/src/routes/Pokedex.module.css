@@ -1,0 +1,13 @@
+.container {
+  width: 80%;
+  margin: 10% auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.option {
+  width: 100%;
+  text-align: end;
+}
+
