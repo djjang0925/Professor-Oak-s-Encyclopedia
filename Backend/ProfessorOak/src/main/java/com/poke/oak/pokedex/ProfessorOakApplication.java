@@ -1,4 +1,4 @@
-package com.poke.oak.professoroak;
+package com.poke.oak.pokedex;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
