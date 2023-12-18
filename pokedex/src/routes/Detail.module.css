@@ -1,0 +1,23 @@
+.container {
+  @media screen and (min-width: 512px) and (max-width: 1024px) {
+    align-items: center;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    max-width: 80%;
+    margin: 20% auto;
+    padding: 5%;
+    background-color: white;
+  }
+
+  @media screen and (min-width: 1025px) {
+    align-items: center;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    max-width: 90%;
+    margin: 5% auto;
+    padding: 5%;
+    background-color: white;
+  }
+}

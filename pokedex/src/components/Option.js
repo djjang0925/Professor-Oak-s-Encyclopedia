@@ -1,7 +1,7 @@
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 import styles from "./Option.module.css";
 import Modal from "react-modal";
-import { useTranslation } from "react-i18next";
 import i18n from "../locales/i18n";
 
 const Option = () => {
@@ -18,7 +18,7 @@ const Option = () => {
         isOpen={modal}
         onRequestClose={() => setModal(false)}
       >
-        <div class="framed">
+        <div className="framed">
           <h1>{t(`home.option`)}</h1>
           <ul>
             <li className={styles.optionList}>

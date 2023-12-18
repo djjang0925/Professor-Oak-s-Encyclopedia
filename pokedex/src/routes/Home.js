@@ -21,7 +21,7 @@ const Home = () => {
       <div>
         <span>{t(`home.description`)}</span>
       </div>
-      <ul class="framed buttons compact" style={{ width: "600px" }}>
+      <ul className="framed buttons compact" style={{ width: "600px" }}>
         <li>
           <button>
             <Link
