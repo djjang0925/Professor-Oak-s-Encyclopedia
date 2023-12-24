@@ -20,16 +20,27 @@
         <result column="retro_img" property="retroImg"/>
     </resultMap>
 
+<!--    DB에 넣기-->
     <insert id="importDB" parameterType="pokemonDto">
         insert into pokemon_info(pokedex_number, color, is_legendary, base_happiness, capture_rate, name_ko, name_en, genera_ko, genera_en, description_ko, description_en, retro_img)
         values(#{pokedexNumber}, #{color}, #{isLegendary}, #{baseHappiness}, #{captureRate}, #{nameKo}, #{nameEn}, #{generaKo}, #{generaEn}, #{descriptionKo}, #{descriptionEn}, #{retroImg})
     </insert>
 
-    <select id="getPokemonList" resultMap="pokemon">
+<!--    포켓몬 리스트 가져오기-->
+    <select id="getPokemonList" parameterType="hashmap" resultMap="pokemon">
         select pokedex_number, color, name_ko, name_en, retro_img
         from pokemon_info
+        <choose>
+            <when test="condition eq 'pokedex_number'">
+                where pokedex_number = #{data}
+            </when>
+            <otherwise>
+                where ${condition} like concat('%', #{data}, '%')
+            </otherwise>
+        </choose>
     </select>
 
+<!--    포켓몬 도감 번호로 포켓몬 상세정보 가져오기-->
     <select id="getPokemon" parameterType="int" resultMap="pokemon">
         select pokedex_number, color, is_legendary, base_happiness, capture_rate, name_ko, name_en, genera_ko, genera_en, description_ko, description_en, retro_img
         from pokemon_info

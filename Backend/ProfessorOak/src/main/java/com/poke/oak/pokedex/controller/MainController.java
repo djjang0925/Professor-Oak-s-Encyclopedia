@@ -58,7 +58,7 @@ public class MainController {
                         pokedexService.importDB(pokedexDto);
 
                     } catch (Exception e) {
-                        e.printStackTrace();
+//                        e.printStackTrace();
                         return new ResponseEntity<String>("Error : " + e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
                     }
                 }
@@ -82,7 +82,7 @@ public class MainController {
                     pokedexService.importDB(pokedexDto);
 
                 } catch (Exception e) {
-                    e.printStackTrace();
+//                    e.printStackTrace();
                     return new ResponseEntity<String>("Error : " + e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
                 }
             }
@@ -92,38 +92,22 @@ public class MainController {
     }
 
     /**
-     * 포켓몬 리스트로 받아오기
+     * 포켓몬 리스트 얻기
      * 도감번호, 색깔, 이름(한/영), 이미지 경로
+     * @param param, key는 condition(검색조건), data(검색할 데이터)
      * @return List<HashMap<String, String>>형태의 포켓몬 리스트
      */
     @GetMapping("pokemon-list")
-    public ResponseEntity<?> getPokemonList() {
+    public ResponseEntity<?> getPokemonList(@RequestParam Map<String, String> param) {
         try {
-            List<PokemonDto> pokeList = pokedexService.getPokemonList();
+            // 서비스 호출 후 리스트 받기
+            List<HashMap<String, Object>> pokeList = pokedexService.getPokemonList(param);
 
-            // HashMap List에 담아서 필요한 데이터만 보내기 위해 처리
-            List<HashMap<String, Object>> retList = new ArrayList<HashMap<String, Object>>();
-            for(PokemonDto pokemon : pokeList) {
-                HashMap<String, Object> map = new HashMap<String, Object>();
-                map.put("pokedexNumber", pokemon.getPokedexNumber());
-                map.put("color", pokemon.getColor());
-                map.put("name", new HashMap<String, String>(){{
-                    put("ko", pokemon.getNameKo());
-                    put("en", pokemon.getNameEn());
-                }});
-//                map.put("nameKo", pokemon.getNameKo());
-//                map.put("nameEn", pokemon.getNameEn());
-                map.put("retroImg", pokemon.getRetroImg());
-
-                retList.add(map);
-            }
-
-            return new ResponseEntity<List<HashMap<String, Object>>>(retList, HttpStatus.OK);
+            return new ResponseEntity<List<HashMap<String, Object>>>(pokeList, HttpStatus.OK);
         } catch (Exception e) {
-            e.printStackTrace();
+//            e.printStackTrace();
             return new ResponseEntity<String>("Error : " + e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
         }
-
     }
 
     /**
@@ -159,10 +143,24 @@ public class MainController {
 
             return new ResponseEntity<Map<String, Object>>(retPokemon, HttpStatus.OK);
         } catch (Exception e) {
-            e.printStackTrace();
+//            e.printStackTrace();
             return new ResponseEntity<String>("Error : " + e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
         }
 
     }
+
+//    /**
+//     * 이름으로 포켓몬 정보 검색하기
+//     * @param name 포켓몬 이름
+//     * @return
+//     */
+//    @GetMapping("pokemon-name/{name}")
+//    public ResponseEntity<?> getPokemonByName(@PathVariable("name") String name) {
+//        try {
+//
+//        } catch(Exception e) {
+//            return new ResponseEntity<String>("Error : " + e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+//        }
+//    }
 }
 
