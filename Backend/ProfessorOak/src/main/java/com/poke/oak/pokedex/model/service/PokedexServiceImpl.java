@@ -6,7 +6,10 @@ import com.poke.oak.pokedex.model.mapper.PokedexMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class PokedexServiceImpl implements PokedexService {
@@ -35,12 +38,55 @@ public class PokedexServiceImpl implements PokedexService {
     }
 
     @Override
-    public List<PokemonDto> getPokemonList() throws Exception {
-        return pokedexMapper.getPokemonList();
+    public List<HashMap<String, Object>> getPokemonList(Map<String, String> param) throws Exception {
+        // 매퍼 호출 후 리스트 리턴 받기
+        List<PokemonDto> pokeList = pokedexMapper.getPokemonList(param);
+        // 리턴 받은 리스트를 HashMap List에 담아서 필요한 데이터만 보내기 위해 처리
+        List<HashMap<String, Object>> retList = new ArrayList<HashMap<String, Object>>();
+
+        if(!pokeList.isEmpty()) {
+            for(PokemonDto pokemon : pokeList) {
+                HashMap<String, Object> map = new HashMap<String, Object>();
+                map.put("pokedexNumber", pokemon.getPokedexNumber());
+                map.put("color", pokemon.getColor());
+                map.put("name", new HashMap<String, String>(){{
+                    put("ko", pokemon.getNameKo());
+                    put("en", pokemon.getNameEn());
+                }});
+                map.put("retroImg", pokemon.getRetroImg());
+
+                retList.add(map);
+            }
+        }
+
+        return retList;
     }
 
     @Override
-    public PokemonDto getPokemon(int number) throws Exception {
-        return pokedexMapper.getPokemon(number);
+    public Map<String, Object> getPokemon(int number) throws Exception {
+        PokemonDto pokemonDto = pokedexMapper.getPokemon(number);
+
+        // front로 보내주기 위해 처리
+        Map<String, Object> retPokemon = new HashMap<String, Object>();
+        retPokemon.put("pokedexNumber", pokemonDto.getPokedexNumber());
+        retPokemon.put("color", pokemonDto.getColor());
+        retPokemon.put("isLegendary", pokemonDto.isLegendary());
+        retPokemon.put("baseHappiness", pokemonDto.getBaseHappiness());
+        retPokemon.put("captureRate", pokemonDto.getCaptureRate());
+        retPokemon.put("name", new HashMap<String, String>() {{
+            put("ko", pokemonDto.getNameKo());
+            put("en", pokemonDto.getNameEn());
+        }});
+        retPokemon.put("genera", new HashMap<String, String>(){{
+            put("ko", pokemonDto.getGeneraKo());
+            put("en", pokemonDto.getGeneraEn());
+        }});
+        retPokemon.put("description", new HashMap<String, String>(){{
+            put("ko", pokemonDto.getDescriptionKo());
+            put("en", pokemonDto.getDescriptionEn());
+        }});
+        retPokemon.put("retroImg", pokemonDto.getRetroImg());
+
+        return retPokemon;
     }
 }
