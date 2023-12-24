@@ -30,14 +30,16 @@
     <select id="getPokemonList" parameterType="hashmap" resultMap="pokemon">
         select pokedex_number, color, name_ko, name_en, retro_img
         from pokemon_info
-        <choose>
-            <when test="condition eq 'pokedex_number'">
-                where pokedex_number = #{data}
-            </when>
-            <otherwise>
-                where ${condition} like concat('%', #{data}, '%')
-            </otherwise>
-        </choose>
+        <if test="condition != null">
+            <choose>
+                <when test="condition eq 'pokedex_number'">
+                    where pokedex_number = #{data}
+                </when>
+                <when test="condition eq 'name_ko' or condition eq 'name_en'">
+                    where ${condition} like concat('%', #{data}, '%')
+                </when>
+            </choose>
+        </if>
     </select>
 
 <!--    포켓몬 도감 번호로 포켓몬 상세정보 가져오기-->
