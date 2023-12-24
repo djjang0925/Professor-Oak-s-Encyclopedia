@@ -1,3 +1,7 @@
+.seal {
+  margin-bottom: 30px;
+}
+
 .container {
   width: 200px;
   height: 200px;
@@ -8,7 +12,7 @@
   align-items: center;
   width: fit-content;
   height: 20px;
-  border: 1px solid black;
+  border: 2px dashed black;
   border-radius: 20px;
 }
 
@@ -16,12 +20,12 @@
   text-align: center;
   text-decoration: none;
   font-size: 12px;
+  margin-left: -2px;
   padding-top: 3.5px;
   width: 50px;
   height: 20px;
   color: white;
-  background-color: black;
-  border: 1px solid black;
+  border: 2px dashed black;
   border-radius: 10px;
 }
 
@@ -30,12 +34,19 @@
   padding: 5px;
   text-decoration: none;
   color: black;
+  font-weight: bold;
 }
 
 .indexKoName {
   padding: 5px;
   margin-top: 2px;
   color: black;
+  font-weight: bold;
+}
+
+.image {
+  width: 100%;
+  margin-top: -10px;
 }
 
 .footer {
@@ -52,7 +63,7 @@
 .corporation {
   padding: 6px 8px 4px 25px;
   font-size: 10px;
-  border: 1px solid black;
+  border: 2px dashed black;
   border-radius: 10px;
   color: black;
 }

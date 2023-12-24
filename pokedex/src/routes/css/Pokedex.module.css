@@ -4,6 +4,8 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
+  background-color: white;
+  padding: 30px;
 }
 
 .option {

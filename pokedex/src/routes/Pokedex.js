@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import Option from "../components/Option";
+import Nav from "../components/Nav";
 import Seal from "../components/Seal";
 import styles from "./css/Pokedex.module.css";
 
@@ -8,13 +8,8 @@ const Pokedex = () => {
   const [loading, setLoading] = useState(true);
   const [pokemon, setPokemon] = useState([]);
   const getPokemon = async () => {
-    const allPokemons = [];
-    for (let i = 1; i <= 12; i++) {
-      const json = await (await fetch(`http://localhost:80/poke/${i}`)).json();
-      allPokemons.push(json);
-      console.log(json);
-    }
-    setPokemon(allPokemons);
+    const json = await (await fetch(`http://localhost:80/pokemon-list`)).json();
+    setPokemon(json);
     setLoading(false);
   };
 
@@ -25,7 +20,7 @@ const Pokedex = () => {
     <div>
       <div className={styles.container}>
         <div className={styles.option}>
-          <Option />
+          <Nav />
         </div>
         {loading ? (
           <h1>Loading...</h1>
@@ -33,13 +28,14 @@ const Pokedex = () => {
           pokemon.map((poke, index) => (
             <div key={index}>
               <Link
-                to={`${process.env.PUBLIC_URL}/pokemons/${poke.pokedex_numbers}`}
+                to={`${process.env.PUBLIC_URL}/pokemons/${poke.pokedexNumber}`}
                 style={{ textDecoration: "none" }}
               >
                 <Seal
-                  pokedexNumbers={poke.pokedex_numbers}
-                  names={poke.names}
+                  pokedexNumber={poke.pokedexNumber}
+                  name={poke.name}
                   color={poke.color}
+                  image={poke.retroImg}
                 />
               </Link>
             </div>

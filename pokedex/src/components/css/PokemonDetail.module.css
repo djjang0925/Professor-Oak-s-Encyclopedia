@@ -1,11 +1,22 @@
 .responsive {
   @media screen and (min-width: 1025px) {
     display: flex;
-    border: none;
+  }
+}
+
+.responsiveDescription {
+  @media screen and (min-width: 1025px) {
+    display: flex;
+    flex-direction: column;
   }
 }
 
 .division {
+  @media screen and (max-width: 1024px) {
+    border: dashed 3px;
+    margin-bottom: 30px;
+  }
+
   @media screen and (min-width: 1025px) {
     display: none;
   }
@@ -13,15 +24,17 @@
 
 .pokemonImg {
   @media screen and (min-width: 512px) and (max-width: 1024px) {
-    width: 80%;
+    margin-bottom: -100px;
   }
-  @media screen and (min-width: 1025px) {
-    width: 40%;
-  }
+  width: 100%;
 }
 
 .nameBox {
   margin-bottom: 10%;
+
+  @media screen and (min-width: 1025px) {
+    line-height: 100px;
+  }
 }
 
 .index {
@@ -36,4 +49,23 @@
 .koName {
   font-size: 25px;
   font-weight: bold;
+}
+
+.bar {
+  @media screen and (max-width: 1024px) {
+    width: 50%;
+  }
+  @media screen and (min-width: 1025px) {
+    width: 70%;
+  }
+  margin-left: auto;
+}
+
+.description {
+  @media screen and (min-width: 1025px) {
+    display: flex;
+    flex-direction: column;
+  }
+  line-height: 30px;
+  text-align: start;
 }

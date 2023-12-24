@@ -14,5 +14,9 @@
     "gameboy": "게임보이",
     "latest": "화려하게",
     "close": "닫기"
+  },
+  "nav": {
+    "home": "메인으로",
+    "pokédex": "도감"
   }
 }

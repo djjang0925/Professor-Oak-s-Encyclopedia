@@ -14,5 +14,9 @@
     "gameboy": "GameBoy",
     "latest": "fancy",
     "close": "close"
+  },
+  "nav": {
+    "home": "Home",
+    "pokédex": "Pokédex"
   }
 }

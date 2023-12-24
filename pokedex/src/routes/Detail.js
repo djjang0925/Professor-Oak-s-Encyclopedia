@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import PokemonDetail from "../components/PokemonDetail";
 import styles from "./css/Detail.module.css";
 
@@ -9,10 +9,9 @@ const Detail = () => {
   const [loading, setLoading] = useState(true);
   const [pokemon, setPokemon] = useState([]);
   const getPokemon = async () => {
-    const json = await (await fetch(`http://localhost:80/poke/${id}`)).json();
+    const json = await (await fetch(`http://localhost:80/pokemon/${id}`)).json();
     setPokemon(json);
     setLoading(false);
-    console.log(json);
   };
 
   useEffect(() => {
@@ -25,15 +24,20 @@ const Detail = () => {
       ) : (
         <div className={styles.container}>
           <PokemonDetail
-            pokedexNumbers={pokemon.pokedex_numbers}
-            names={pokemon.names}
+            pokedexNumber={pokemon.pokedexNumber}
+            retroImg={pokemon.retroImg}
+            name={pokemon.name}
             genera={pokemon.genera}
             color={pokemon.color}
-            flavorTextEntries={pokemon.flavor_text_entries}
-            isLegendary={pokemon.is_legendary}
-            baseHappiness={pokemon.base_happiness}
-            captureRate={pokemon.capture_rate}
+            description={pokemon.description}
+            isLegendary={pokemon.isLegendary}
+            baseHappiness={pokemon.baseHappiness}
+            captureRate={pokemon.captureRate}
           />
+          <div className={styles.page}>
+            <Link className={styles.pageTo} to={`${process.env.PUBLIC_URL}/pokemons/${pokemon.pokedexNumber - 1}`}>{"<<"}</Link>
+            <Link className={styles.pageTo} to={`${process.env.PUBLIC_URL}/pokemons/${pokemon.pokedexNumber + 1}`}>{">>"}</Link>
+          </div>
         </div>
       )}
     </div>
