@@ -4,8 +4,6 @@ import com.poke.oak.pokedex.model.PokedexDto;
 import com.poke.oak.pokedex.model.PokemonDto;
 import com.poke.oak.pokedex.model.mapper.PokedexMapper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -65,7 +63,30 @@ public class PokedexServiceImpl implements PokedexService {
     }
 
     @Override
-    public PokemonDto getPokemon(int number) throws Exception {
-        return pokedexMapper.getPokemon(number);
+    public Map<String, Object> getPokemon(int number) throws Exception {
+        PokemonDto pokemonDto = pokedexMapper.getPokemon(number);
+
+        // front로 보내주기 위해 처리
+        Map<String, Object> retPokemon = new HashMap<String, Object>();
+        retPokemon.put("pokedexNumber", pokemonDto.getPokedexNumber());
+        retPokemon.put("color", pokemonDto.getColor());
+        retPokemon.put("isLegendary", pokemonDto.isLegendary());
+        retPokemon.put("baseHappiness", pokemonDto.getBaseHappiness());
+        retPokemon.put("captureRate", pokemonDto.getCaptureRate());
+        retPokemon.put("name", new HashMap<String, String>() {{
+            put("ko", pokemonDto.getNameKo());
+            put("en", pokemonDto.getNameEn());
+        }});
+        retPokemon.put("genera", new HashMap<String, String>(){{
+            put("ko", pokemonDto.getGeneraKo());
+            put("en", pokemonDto.getGeneraEn());
+        }});
+        retPokemon.put("description", new HashMap<String, String>(){{
+            put("ko", pokemonDto.getDescriptionKo());
+            put("en", pokemonDto.getDescriptionEn());
+        }});
+        retPokemon.put("retroImg", pokemonDto.getRetroImg());
+
+        return retPokemon;
     }
 }

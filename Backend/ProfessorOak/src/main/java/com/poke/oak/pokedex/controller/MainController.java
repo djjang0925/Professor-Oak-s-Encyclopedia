@@ -118,28 +118,7 @@ public class MainController {
     @GetMapping("pokemon/{number}")
     public ResponseEntity<?> getPokemon(@PathVariable("number") int number) {
         try {
-            PokemonDto pokemonDto = pokedexService.getPokemon(number);
-
-            // front로 보내주기 위해 처리
-            Map<String, Object> retPokemon = new HashMap<String, Object>();
-            retPokemon.put("pokedexNumber", pokemonDto.getPokedexNumber());
-            retPokemon.put("color", pokemonDto.getColor());
-            retPokemon.put("isLegendary", pokemonDto.isLegendary());
-            retPokemon.put("baseHappiness", pokemonDto.getBaseHappiness());
-            retPokemon.put("captureRate", pokemonDto.getCaptureRate());
-            retPokemon.put("name", new HashMap<String, String>() {{
-                put("ko", pokemonDto.getNameKo());
-                put("en", pokemonDto.getNameEn());
-            }});
-            retPokemon.put("genera", new HashMap<String, String>(){{
-                put("ko", pokemonDto.getGeneraKo());
-                put("en", pokemonDto.getGeneraEn());
-            }});
-            retPokemon.put("description", new HashMap<String, String>(){{
-                put("ko", pokemonDto.getDescriptionKo());
-                put("en", pokemonDto.getDescriptionEn());
-            }});
-            retPokemon.put("retroImg", pokemonDto.getRetroImg());
+            Map<String, Object> retPokemon = pokedexService.getPokemon(number);
 
             return new ResponseEntity<Map<String, Object>>(retPokemon, HttpStatus.OK);
         } catch (Exception e) {
@@ -149,18 +128,5 @@ public class MainController {
 
     }
 
-//    /**
-//     * 이름으로 포켓몬 정보 검색하기
-//     * @param name 포켓몬 이름
-//     * @return
-//     */
-//    @GetMapping("pokemon-name/{name}")
-//    public ResponseEntity<?> getPokemonByName(@PathVariable("name") String name) {
-//        try {
-//
-//        } catch(Exception e) {
-//            return new ResponseEntity<String>("Error : " + e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
-//        }
-//    }
 }
 
