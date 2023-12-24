@@ -1,4 +1,4 @@
-import styles from "./Seal.module.css";
+import styles from "./css/Seal.module.css";
 import { useTranslation } from "react-i18next";
 
 const Seal = ({ pokedexNumbers, names, color }) => {

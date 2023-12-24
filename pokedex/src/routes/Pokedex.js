@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Option from "../components/Option";
 import Seal from "../components/Seal";
-import styles from "./Pokedex.module.css";
+import styles from "./css/Pokedex.module.css";
 
 const Pokedex = () => {
   const [loading, setLoading] = useState(true);

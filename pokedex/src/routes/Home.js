@@ -1,5 +1,5 @@
-import styles from "./Home.module.css";
-import Option from "../components/Option";
+import styles from "./css/Home.module.css";
+import Option from "../components/Option.js";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 

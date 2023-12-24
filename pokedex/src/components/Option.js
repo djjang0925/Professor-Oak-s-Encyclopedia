@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
-import styles from "./Option.module.css";
+import styles from "./css/Option.module.css";
 import Modal from "react-modal";
 import i18n from "../locales/i18n";
 

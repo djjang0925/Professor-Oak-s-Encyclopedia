@@ -1,6 +1,6 @@
 import { useTranslation } from "react-i18next";
 import Option from "./Option";
-import styles from "./PokemonDetail.module.css";
+import styles from "./css/PokemonDetail.module.css";
 
 const PokemonDetail = ({
   pokedexNumbers,
