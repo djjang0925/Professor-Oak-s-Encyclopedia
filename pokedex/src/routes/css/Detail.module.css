@@ -21,3 +21,11 @@
     background-color: white;
   }
 }
+
+.page {
+  justify-content: space-between;
+}
+
+.pageTo {
+  font-size: 30px;
+}

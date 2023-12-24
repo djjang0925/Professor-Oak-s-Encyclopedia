@@ -16,6 +16,7 @@ const Option = () => {
       <Modal
         className={styles.modal}
         isOpen={modal}
+        ariaHideApp={false}
         onRequestClose={() => setModal(false)}
       >
         <div className="framed">
